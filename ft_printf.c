@@ -6,7 +6,7 @@
 /*   By: lnorris <lnorris@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:59:07 by lnorris           #+#    #+#             */
-/*   Updated: 2024/11/24 18:57:53 by lnorris          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:25:53 by lnorris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ static int	check_format(const char *c, va_list *list)
 	else if (*c == 'u')
 		printed_from_var += print_uint(va_arg(*list, unsigned int));
 	else if (*c == 'x')
-		printed_from_var += print_hex((unsigned long long)va_arg(*list, unsigned int), 0, 0);
+		printed_from_var += print_hex((t_ull)va_arg(*list, unsigned int), 0, 0);
 	else if (*c == 'X')
-		printed_from_var += print_hex((unsigned long long)va_arg(*list, unsigned int), 1, 0);
-	else 
+		printed_from_var += print_hex((t_ull)va_arg(*list, unsigned int), 1, 0);
+	else
 		printed_from_var += write(1, "%", 1);
 	return (printed_from_var);
 }
-
+/*
 int main(void)
 {
 	unsigned int a = UINT_MAX;
@@ -80,4 +80,4 @@ int main(void)
 	printf("printed chars from ft_printf: %i\n\n", ft_printf("int: %d, int: %i, hex: %x, hex: %X, char: %c, char %c, pointer: %p, uint: %u, uint: %u, string null: %s, string text: %s, string empty: %s, %%\n", e, f, a, b, c, d, ptr, a, b, s, str, string));
 	
 	return (0);
-}
+}*/
