@@ -6,7 +6,7 @@
 /*   By: lnorris <lnorris@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:56:16 by lnorris           #+#    #+#             */
-/*   Updated: 2024/11/24 03:04:28 by lnorris          ###   ########.fr       */
+/*   Updated: 2024/11/24 18:50:17 by lnorris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 # include <stdio.h>
 
-int print_hex(unsigned int n, int bool);
-int print_char(char c);
-int print_int(int n);
+int     print_hex(unsigned long long n, int is_capital, int is_pointer);
+int     print_char(char c);
+int     print_int(int n);
+int     print_uint(unsigned int n);
+char	*ft_uitoa(unsigned int n);
+int     print_string(char *s);
 
 #endif

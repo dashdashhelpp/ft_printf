@@ -6,26 +6,26 @@
 /*   By: lnorris <lnorris@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:29:28 by lnorris           #+#    #+#             */
-/*   Updated: 2024/11/24 03:06:23 by lnorris          ###   ########.fr       */
+/*   Updated: 2024/11/24 18:07:58 by lnorris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include "libft.h"
 
-static int  hexlen(unsigned int n);
+static int  hexlen(unsigned long long n, int *is_pointer);
 
-int print_hex(unsigned int n, int is_capital)
+int print_hex(unsigned long long n, int is_capital, int is_pointer)
 {
     int i;
 
-    i = hexlen(n);
+    i = hexlen(n, &is_pointer);
     if (n == 0)
         return (write(1, "0", 1));
     if (n >= 16)
     {
-        print_hex(n / 16, is_capital);
-        print_hex(n % 16, is_capital);
+        print_hex(n / 16, is_capital, is_pointer);
+        print_hex(n % 16, is_capital, is_pointer);
     }
     else 
     {
@@ -43,11 +43,16 @@ int print_hex(unsigned int n, int is_capital)
     }
     return (i);
 }
-static int  hexlen(unsigned int n)
+static int  hexlen(unsigned long long n, int *is_pointer)
 {
     int length;
 
     length = 0;
+    if (*is_pointer)
+    {
+        length += write(1, "0x", 2);
+        *is_pointer = 0;
+    }
     if (n == 0)
         return (1);
     while (n != 0)
