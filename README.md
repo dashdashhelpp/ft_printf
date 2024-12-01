@@ -1,0 +1,1 @@
+It prints stuff with variadic stuff
